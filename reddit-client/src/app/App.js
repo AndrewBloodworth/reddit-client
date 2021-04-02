@@ -13,7 +13,6 @@ export const App = () => {
                     <Route path='/' component={Home} />
                 </Switch>
             </Router>
-            <h1>Hello World</h1>
         </main>
     )
 }

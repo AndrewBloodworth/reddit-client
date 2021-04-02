@@ -12,5 +12,31 @@ html, body {
 
 .main-nav h1 {
     color: white;
+}
 
+.feed {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.post {
+    width: 450px;
+    height: 400px;
+    border: 1px solid red;
+}
+
+.inner-post {
+    display: grid;
+    grid-template: 1fr / 1fr 4fr;
+    height: 100%;
+}
+
+.rate-container {
+    background-color: blue;
+}
+
+.content-container {
+    
 }
