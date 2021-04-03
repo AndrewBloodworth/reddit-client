@@ -1,6 +1,7 @@
 import React from 'react';
 
-export const Post = ({post_data, post_hint, title, thumbnail, ups, author, media}) => {
+export const Post = ({post_data}) => {
+    const { post_hint, title, thumbnail, ups, author } = post_data;
     let titleStyles = {
         margin: 10,
         height: '100%'
@@ -21,11 +22,18 @@ export const Post = ({post_data, post_hint, title, thumbnail, ups, author, media
                     <img src={imgUrl} style={{width: '100%'}} alt='' />
                 )
             case 'hosted:video':
-                const videoSource = post_data.media.reddit_video;
-                const { fallback_url } = videoSource
+                const hostedVideoSource = post_data.media.reddit_video;
                 return (
                     <video style={{width: '100%'}} autoPlay muted controls>
-                        <source src={fallback_url} type="video/mp4" />
+                        <source src={hostedVideoSource.fallback_url} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                )
+            case 'rich:video':
+                const richVideoSource = post_data.preview.reddit_video_preview;
+                return (
+                    <video style={{width: '100%'}} autoPlay muted controls>
+                        <source src={richVideoSource.fallback_url} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 )
@@ -38,6 +46,11 @@ export const Post = ({post_data, post_hint, title, thumbnail, ups, author, media
             default:
                 break;
         }
+    }
+    const getHourDiff = () => {
+        let now = new Date().getHours();
+        let oldD = new Date(post_data.created).getHours()
+        let ugh = new Date(post_data.created)
     }
     return (
         <div className='post'>
@@ -58,6 +71,9 @@ export const Post = ({post_data, post_hint, title, thumbnail, ups, author, media
                     <div className='post-footer'>
                         <div className='author'>
                             <p>Posted by: {author}</p>
+                        </div>
+                        <div className='post-time'>
+                            <p>{getHourDiff()}</p>
                         </div>
                     </div>
                 </div>
