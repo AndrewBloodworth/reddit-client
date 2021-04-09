@@ -58,10 +58,9 @@ html, body {
     height: 119px;
     overflow: hidden;
 }
-hr {
+hr,
+.thumbnail,
+.post-footer {
     margin: 10px
 }
-.thumbnail {
-    
-    margin: 10px;
-}
+

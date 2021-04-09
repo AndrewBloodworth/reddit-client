@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPosts, selectFeed } from './feedSlice';
 import { Post } from '../post/Post';
+import { PostLoading } from '../post/PostLoading'
 
 export const Feed = () => {
     const { feed, isLoadingPosts } = useSelector(selectFeed);
@@ -25,7 +26,7 @@ export const Feed = () => {
     }
     return (
         <div className='feed'>
-            {isLoadingPosts ? <h2>Loading...</h2> : makePosts()}
+            {isLoadingPosts ? <PostLoading /> : makePosts()}
         </div>
     )
 

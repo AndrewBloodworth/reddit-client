@@ -31,6 +31,7 @@ export const Post = ({post_data}) => {
                 )
             case 'rich:video':
                 const richVideoSource = post_data.preview.reddit_video_preview;
+                if (!richVideoSource) return;
                 return (
                     <video style={{width: '100%'}} autoPlay muted controls>
                         <source src={richVideoSource.fallback_url} type="video/mp4" />
@@ -38,11 +39,15 @@ export const Post = ({post_data}) => {
                     </video>
                 )
             case 'link':
-                break;
+                return (
+                    <a href={post_data.url} target="_blank">Link</a>
+                )
             case 'self':
                 break;
             case undefined:
-                break;
+                return (
+                    <p>{post_data.selftext}</p>
+                )
             default:
                 break;
         }
@@ -70,7 +75,7 @@ export const Post = ({post_data}) => {
                     <hr/>
                     <div className='post-footer'>
                         <div className='author'>
-                            <p>Posted by: {author}</p>
+                            <p>Posted by: <span style={{color: 'blue'}}>{author}</span></p>
                         </div>
                         <div className='post-time'>
                             <p>{getHourDiff()}</p>
