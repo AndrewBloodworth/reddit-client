@@ -57,13 +57,18 @@ export const Post = ({post_data}) => {
         let oldD = new Date(post_data.created).getHours()
         let ugh = new Date(post_data.created)
     }
+    const configureUps = (ups) => {
+        let div = Math.floor(ups / 1000)
+        let mod = String(ups % 1000)[0]
+        return `${div}.${mod}k`
+    }
     return (
         <div className='post'>
             <div className='inner-post'>
                 <div className='rate-container'>
-                    <h2>↑</h2>
-                    <h3>{ups}</h3>
-                    <h2>↓</h2>
+                    <h2 id='up-arrow'>↑</h2>
+                    <h3>{configureUps(ups)}</h3>
+                    <h2 id='down-arrow'>↓</h2>
                 </div>
                 <div className='content-container'>
                     <div className='title' style={titleStyles}>

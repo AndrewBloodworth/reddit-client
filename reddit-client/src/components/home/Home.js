@@ -4,8 +4,10 @@ import { Feed } from '../../features/feed/Feed';
 export const Home = () => {
     return (
         <div className='home'>
-            <h1>Home Page</h1>
-            <Feed />
+            <div className='feed-container'>
+                <Feed />
+                <div className='side-bar'>This thing</div>
+            </div>
         </div>
     )
 }

@@ -15,15 +15,33 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 75px;
-    background-color: blue;
+    background-color: #0060a8;
 }
 
 .main-nav h1 {
     color: white;
 }
-
+.home {
+    border: 1px solid red;
+    background-color: rgb(212, 212, 212);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.feed-container {
+    width: 80%;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-around;
+}
+.side-bar {
+    width: 30%;
+    margin-right: 20px;
+    margin-top: 20px;
+    border: 1px solid purple;
+}
 .feed {
-    max-width: 100vw;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,15 +49,22 @@ html, body {
 }
 
 .post {
-    margin: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: calc(100vw - 40px);
+    margin: 10px;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    width: calc(100% - 40px);
 }
 
 .inner-post {
     display: grid;
-    grid-template: 1fr / 1fr 4fr;
+    grid-template: 1fr / 1fr 20fr;
     height: 100%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #a4a8aa;
+    cursor: pointer;
+}
+.inner-post:hover {
+    border: 1px solid #6d6f70;
 }
 
 .rate-container {
@@ -47,6 +72,18 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    font-size: 12px;
+    margin: 5px;
+}
+.rate-container h2,
+.rate-container h3 {
+    margin: 0;
+}
+#up-arrow:hover {
+    color: red;
+}
+#down-arrow:hover {
+    color: blue;
 }
 
 .content-container {
@@ -58,9 +95,10 @@ html, body {
     height: 119px;
     overflow: hidden;
 }
+
 hr,
 .thumbnail,
 .post-footer {
-    margin: 10px
+    /*margin: 10px*/
 }
 
