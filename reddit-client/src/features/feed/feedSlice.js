@@ -10,6 +10,7 @@ export const getPosts = createAsyncThunk(
         return jsonResponse;
     }
 )
+
 const feedSlice = createSlice({
     name: 'feed',
     initialState: {

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Post = ({post_data}) => {
-    const { post_hint, title, thumbnail, ups, author } = post_data;
+    const [icon, setIcon] = useState('');
+
+    const { post_hint, title, thumbnail, ups, author, subreddit } = post_data;
     let titleStyles = {
         margin: 10,
         height: '100%'
@@ -62,6 +64,14 @@ export const Post = ({post_data}) => {
         let mod = String(ups % 1000)[0]
         return `${div}.${mod}k`
     }
+    const getSubredditImage = async (subreddit) => {
+        const url = `https://www.reddit.com/r/${subreddit}/about.json`;
+        const response = await fetch(url);
+        const jsonResponse = await response.json();
+        setIcon(jsonResponse.data.icon_img)
+        console.log(jsonResponse)
+    }
+    getSubredditImage(subreddit)
     return (
         <div className='post'>
             <div className='inner-post'>
@@ -71,6 +81,20 @@ export const Post = ({post_data}) => {
                     <h2 id='down-arrow'>↓</h2>
                 </div>
                 <div className='content-container'>
+                    <div className='post-header'>
+                        <div className='subreddit-icon'>
+                            <img src={icon} style={{height: 20, width: 20, borderRadius: 10}}></img>
+                        </div>
+                        <div className='subreddit-name'>
+                            <p>r/{subreddit}</p>
+                        </div>
+                        <div className='author'>
+                            <p>Posted by: <span id='author-link'>u/{author}</span></p>
+                        </div>
+                        <div className='post-time'>
+                            <p>{getHourDiff()}</p>
+                        </div>
+                    </div>
                     <div className='title' style={titleStyles}>
                         <h3>{title}</h3>
                     </div>
@@ -78,14 +102,6 @@ export const Post = ({post_data}) => {
                         {getMediaType()}
                     </div>
                     <hr/>
-                    <div className='post-footer'>
-                        <div className='author'>
-                            <p>Posted by: <span style={{color: 'blue'}}>{author}</span></p>
-                        </div>
-                        <div className='post-time'>
-                            <p>{getHourDiff()}</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

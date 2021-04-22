@@ -24,9 +24,19 @@ export const Feed = () => {
             )
         })
     }
+    const style = {
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column'
+    }
     return (
         <div className='feed'>
-            {isLoadingPosts ? <PostLoading /> : makePosts()}
+            {isLoadingPosts ? 
+            <div style={style}>
+                <PostLoading />
+                <PostLoading />
+            </div>
+             : makePosts()}
         </div>
     )
 

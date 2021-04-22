@@ -10,9 +10,9 @@ export const PostLoading = () => {
         <div className='post'>
             <div className='inner-post'>
                 <div className='rate-container'>
-                    <h2>↑</h2>
+                    <h2 id='up-arrow'>↑</h2>
                     <h3><Skeleton style={{height: 25, width: 25}}/></h3>
-                    <h2>↓</h2>
+                    <h2 id='down-arrow'>↓</h2>
                 </div>
                 <div className='content-container'>
                     <div className='title' style={titleStyles}>
